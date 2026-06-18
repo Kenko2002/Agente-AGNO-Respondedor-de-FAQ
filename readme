@@ -1,0 +1,5 @@
+python -m venv venv
+source venv/bin/activate  # No Windows: venv\Scripts\activate
+python app.py
+
+GOOGLE_API_KEY=AQ.Ab8RN6KCPbd_mkPr6q_NMVoGX5-81saVExCjqVUcwvB_4_9pnA
