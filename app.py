@@ -5,17 +5,6 @@ from agno.models.google import Gemini
 from agno.vectordb.chroma import ChromaDb
 from agno.vectordb.search import SearchType
 
-import requests
-
-# Baixa o markdown seguindo redirecionamentos
-url = "https://docs.agno.com/introduction.md"
-
-response = requests.get(url, allow_redirects=True)
-response.raise_for_status()
-
-with open("introduction.md", "w", encoding="utf-8") as f:
-    f.write(response.text)
-
 # Cria a base de conhecimento
 knowledge = Knowledge(
     vector_db=ChromaDb(
@@ -27,9 +16,9 @@ knowledge = Knowledge(
     ),
 )
 
-# Insere o arquivo local
+# Insere o guia do usuário local
 knowledge.insert(
-    path="introduction.md",
+    path="documentos/GUIA_DO_USUÁRIO.pdf",
     skip_if_exists=True,
 )
 
@@ -41,4 +30,4 @@ agent = Agent(
     markdown=True,
 )
 
-agent.print_response("What is Agno?", stream=True)
+agent.print_response("Me dê um resumo do guia do usuário.", stream=True)
