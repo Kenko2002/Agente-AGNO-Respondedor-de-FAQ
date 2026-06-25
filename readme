@@ -1,3 +1,11 @@
 python -m venv venv
 source venv/bin/activate  # No Windows: venv\Scripts\activate
-python app.py
+pip install -r requirements.txt   
+
+Em um terminal:
+uvicorn backend:app --reload --host 0.0.0.0 --port 8000
+
+Em outro Terminal:
+cd frontend
+reflex run
+
