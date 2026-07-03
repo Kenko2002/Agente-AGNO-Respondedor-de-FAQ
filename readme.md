@@ -10,7 +10,7 @@ O agente é instruído a nunca inventar informações: se a resposta não estive
 - Busca híbrida sobre os documentos
 - Respostas geradas pelo Gemini, restritas ao conteúdo da base de conhecimento
 - Interface web de chat construída com Reflex
-- API em FastAPI que expõe o agente via endpoint `/chat`
+- API em FastAPI que expõe o agente via endpoint
 
 ## Arquitetura
 
