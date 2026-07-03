@@ -2,7 +2,7 @@
 
 Assistente virtual que responde perguntas frequentes da universidade com base exclusivamente em documentos oficiais (PDFs), usando busca vetorial (RAG) e o modelo Gemini via AGNO.
 
-O agente é instruído a nunca inventar informações: se a resposta não estiver nos documentos indexados, ele informa isso claramente ao usuário.
+O agente é instruído a nunca inventar informações, se a resposta não estiver nos documentos indexados ele informa isso claramente ao usuário.
 
 ## Funcionalidades
 
