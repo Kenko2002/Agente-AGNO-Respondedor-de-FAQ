@@ -9,6 +9,18 @@ from agno.vectordb.chroma import ChromaDb
 from agno.vectordb.search import SearchType
 from pathlib import Path
 
+pdf_path = Path("documentos")
+
+# Garantir que a pasta exista
+if not pdf_path.exists():
+    raise FileNotFoundError("Pasta 'documentos' não encontrada.")
+
+# Lista PDFs dentro da pasta
+pdfs = list(pdf_path.glob("*.pdf"))
+
+# Se não existir PDF, interrompe
+if not pdfs:
+    raise FileNotFoundError("Nenhum PDF encontrado na pasta 'documentos'.")
 
 # Cria a base de conhecimento
 knowledge = Knowledge(
@@ -22,7 +34,7 @@ knowledge = Knowledge(
 )
 
 # Indexa todos os PDFs
-for pdf in Path("documentos").glob("*.pdf"):
+for pdf in pdfs:
     print(f"Indexando: {pdf}")
 
     knowledge.insert(
@@ -40,6 +52,9 @@ agent = Agent(
 
 while True:
     pergunta = input("\nVocê: ")
+
+    if not pergunta.strip():
+        continue
 
     if pergunta.lower() in ["sair", "exit", "quit"]:
         print("Encerrando...")
