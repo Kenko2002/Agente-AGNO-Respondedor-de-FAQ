@@ -17,6 +17,7 @@ from pathlib import Path
 
 app = FastAPI()
 
+# Libera requisições do frontend para a API
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -25,7 +26,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Knowledge (mesma coisa que você já tem)
 knowledge = Knowledge(
     vector_db=ChromaDb(
         collection="docs",
@@ -36,6 +36,7 @@ knowledge = Knowledge(
     ),
 )
 
+# Indexa todos os PDFs presentes na pasta "documentos"
 for pdf in Path("documentos").rglob("*.pdf"):
     print(f"Indexando: {pdf}")
 
@@ -43,6 +44,8 @@ for pdf in Path("documentos").rglob("*.pdf"):
         path=str(pdf),
         skip_if_exists=True,
     )
+
+# Configuração do agente responsável por responder às perguntas
 
 agent = Agent(
     model=Gemini(id="gemini-3-flash-preview"),
@@ -72,6 +75,8 @@ agent = Agent(
         """
     ]
 )
+
+# Endpoint responsável por receber a pergunta e retornar a resposta do agente
 
 class Question(BaseModel):
     text: str
