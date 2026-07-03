@@ -1,25 +1,25 @@
 # Agente AGNO — Respondedor de FAQ da Universidade
 
-Assistente virtual que responde perguntas frequentes da universidade com base exclusivamente em documentos oficiais (PDFs), usando busca vetorial (RAG) e o modelo Gemini via AGNO (https://github.com/agno-agi/agno).
+Assistente virtual que responde perguntas frequentes da universidade com base exclusivamente em documentos oficiais (PDFs), usando busca vetorial (RAG) e o modelo Gemini via AGNO.
 
 O agente é instruído a nunca inventar informações: se a resposta não estiver nos documentos indexados, ele informa isso claramente ao usuário.
 
 ## Funcionalidades
 
-- Indexação automática de PDFs (FAQ, guias, manuais) em um banco vetorial local (ChromaDB)
-- Busca híbrida (semântica + palavra-chave) sobre os documentos
+- Indexação automática de PDFs em um banco vetorial local
+- Busca híbrida sobre os documentos
 - Respostas geradas pelo Gemini, restritas ao conteúdo da base de conhecimento
-- Interface web de chat construída com Reflex (https://reflex.dev/)
+- Interface web de chat construída com Reflex
 - API em FastAPI que expõe o agente via endpoint `/chat`
 
 ## Arquitetura
 
 ```text
-documentos/          → PDFs que compõem a base de conhecimento (FAQ, guias, etc.)
-backend.py           → API FastAPI que carrega o agente AGNO e expõe o endpoint /chat
-app.py               → Versão do agente para uso via terminal (CLI), sem API
-frontend/            → Aplicação Reflex (interface de chat web)
-tmp/chromadb/        → Banco vetorial persistido localmente (gerado automaticamente)
+documentos/          PDFs que compõem a base de conhecimento (FAQ, guias, etc.)
+backend.py           API FastAPI que carrega o agente AGNO e expõe o endpoint /chat
+app.py               Versão do agente para uso via terminal (CLI), sem API
+frontend/            Aplicação Reflex (interface de chat web)
+tmp/chromadb/        Banco vetorial persistido localmente (gerado automaticamente)
 ```
 
 ### Fluxo
@@ -31,17 +31,17 @@ tmp/chromadb/        → Banco vetorial persistido localmente (gerado automatica
 
 ## Tecnologias
 
-- AGNO (https://github.com/agno-agi/agno) — orquestração do agente e da base de conhecimento
-- Google Gemini (https://ai.google.dev/) — modelo de linguagem e embeddings
-- ChromaDB (https://www.trychroma.com/) — banco de dados vetorial
-- FastAPI (https://fastapi.tiangolo.com/) — backend/API
-- Reflex (https://reflex.dev/) — frontend em Python
+- AGNO — orquestração do agente e da base de conhecimento
+- Google Gemini — modelo de linguagem e embeddings
+- ChromaDB — banco de dados vetorial
+- FastAPI — backend/API
+- Reflex — frontend em Python
 
 ## Pré-requisitos
 
-- Python 3.10+
-- Uma chave de API do Google Gemini (Google AI Studio: https://aistudio.google.com/)
-- (Opcional) Bun (https://bun.sh/) — instalado automaticamente pelo Reflex na primeira execução do frontend
+- Python 3.14.2
+- Uma chave de API do Google Gemini 
+- (Opcional) Bun — instalado automaticamente pelo Reflex na primeira execução do frontend
 
 ## Instalação
 
