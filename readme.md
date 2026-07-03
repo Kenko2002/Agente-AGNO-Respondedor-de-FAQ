@@ -1,4 +1,4 @@
-# Agente AGNO — Respondedor de FAQ da Universidade
+# Agente AGNO — Respondedor de FAQ
 
 Assistente virtual que responde perguntas frequentes da universidade com base exclusivamente em documentos oficiais (PDFs), usando busca vetorial (RAG) e o modelo Gemini via AGNO.
 
